@@ -1,4 +1,3 @@
-import { Moon } from "lucide-react";
 import mongoose from "mongoose";
 
 const sessionSchema = new mongoose.Schema({
