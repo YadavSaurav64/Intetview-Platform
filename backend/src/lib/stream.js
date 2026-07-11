@@ -1,5 +1,6 @@
 import {StreamChat} from 'stream-chat';
 import { ENV } from './env.js';
+import {StreamClient} from '@stream-io/node-sdk'
 
 const apiKey=ENV.STEAM_API_KEY
 const apiSecret=ENV.STEAM_SECRET_KEY
@@ -8,7 +9,9 @@ if(!apiKey || !apiSecret){
   throw new Error("Missing Stream API Key or Secret")
 }
 
-export const chatClient = StreamChat.getInstance(apiKey,apiSecret)
+export const chatClient = StreamChat.getInstance(apiKey,apiSecret) // used for chat features
+
+export const streamClient = new StreamClient(apiKey,apiSecret) //user for video calls
 
 export const upsertStreamUser= async(userData)=>{
   try {
@@ -27,5 +30,3 @@ export const deleteStreamUser= async(userId)=>{
     console.error("Error deleting Stream user:",error)
   }
 }
-
-//todo: add another method to generateToken

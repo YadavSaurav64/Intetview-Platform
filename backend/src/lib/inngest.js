@@ -29,6 +29,7 @@ const syncUser = inngest.createFunction(
         image:newUser.profileImage,
       });
     }
+    //once the user is created means it is a new user so we will use mail to welcome them 
 )
 
 const deleteUser = inngest.createFunction(
