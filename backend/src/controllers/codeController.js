@@ -63,9 +63,6 @@ export const codeExecute = async (req, res) => {
 
     const data = await response.json();
 
-    // Uncomment this for the first test
-    console.log("OneCompiler Response:", data);
-
     if (!response.ok) {
       return res.status(response.status).json({
         success: false,
