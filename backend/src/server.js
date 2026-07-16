@@ -6,7 +6,7 @@ import cors from "cors"
 import {serve} from "inngest/express"
 import { inngest,functions } from './lib/inngest.js'
 import {clerkMiddleware} from "@clerk/express"
-import { protectRoute } from './middleware/protectRoute.js'
+import codeRouter from './routes/codeRoute.js'
 import sessionRoutes from './routes/sessionRoutes.js'
 import chatRoutes from './routes/chatRoutes.js'
 
@@ -24,6 +24,7 @@ app.use(clerkMiddleware()) // this ads auth field to req object: req.auth()
 app.use("/api/inngest",serve({client:inngest,functions}))
 app.use("/api/chat",chatRoutes)
 app.use("/api/sessions",sessionRoutes)
+app.use("/api/code",codeRouter)
 
 app.get("/hello",(req,res)=>{
   res.status(200).json({msg:"Success"})
