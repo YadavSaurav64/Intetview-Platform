@@ -110,10 +110,10 @@ function ProblemPage() {
     <div className="h-screen bg-base-100 flex flex-col">
       <Navbar />
 
-      <div className="flex-1 min-h-0">
+      <div className="flex-1">
         <PanelGroup direction="horizontal">
           {/* left panel- problem desc */}
-          <Panel defaultSize={40} minSize={30} className="min-h-0">
+          <Panel defaultSize={40} minSize={30}>
             <ProblemDescription
               problem={currentProblem}
               currentProblemId={currentProblemId}
@@ -125,10 +125,10 @@ function ProblemPage() {
           <PanelResizeHandle className="w-2 bg-base-300 hover:bg-primary transition-colors cursor-col-resize" />
 
           {/* right panel- code editor & output */}
-          <Panel defaultSize={60} minSize={30} className="min-h-0">
+          <Panel defaultSize={60} minSize={30}>
             <PanelGroup direction="vertical">
               {/* Top panel - Code editor */}
-              <Panel defaultSize={70} minSize={30} className="min-h-0">
+              <Panel defaultSize={70} minSize={30}>
                 <CodeEditorPanel
                   selectedLanguage={selectedLanguage}
                   code={code}

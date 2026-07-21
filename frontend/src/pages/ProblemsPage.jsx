@@ -5,7 +5,7 @@ import { PROBLEMS } from "../data/problems";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
 import { getDifficultyBadgeClass } from "../lib/utils";
 
-const ProblemsPage = ()=> {
+function ProblemsPage() {
   const problems = Object.values(PROBLEMS);
 
   const easyProblemsCount = problems.filter((p) => p.difficulty === "Easy").length;

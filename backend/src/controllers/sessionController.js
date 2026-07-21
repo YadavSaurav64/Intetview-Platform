@@ -4,7 +4,7 @@ export const createSession = async(req,res)=>{
   try {
     const {problem, difficulty} = req.body;
     const userId= req.user._id;
-    const clerckId = req.user.clerckId
+    const clerckId = req.user.clerkId
 
     if(!problem || !difficulty){
       return res.status(400).json({message:"Problem and difficulty are required"})
@@ -19,7 +19,7 @@ export const createSession = async(req,res)=>{
     //create stream video call
     await streamClient.video.call("default",callId).getOrCreate({
       data:{
-        created_by_id:clerckId,
+        created_by_id:clerkId,
         custom:{problem,difficulty,sessionId:session._id.toString()}
       }
     });
@@ -28,8 +28,8 @@ export const createSession = async(req,res)=>{
 
     const channel = chatClient.channel("messaging",callId,{
       name:`${problem} Session`,
-      created_by_id:clerckId,
-      members:[clerckId]
+      created_by_id:clerkId,
+      members:[clerkId]
     })
 
     await channel.create();
@@ -93,7 +93,7 @@ export const joinSession = async(req,res)=>{
 
     const {id} = req.params
     const userId = req.user._id;
-    const clerckId = req.user.clerckId;
+    const clerkId = req.user.clerkId;
 
     const session = await Session.findById(id);
 
@@ -116,7 +116,7 @@ export const joinSession = async(req,res)=>{
 
     const channel = chatClient.channel("messaging",session.callId);
 
-    await channel.addMembers([clerckId]);
+    await channel.addMembers([clerkId]);
 
     res.status(200).json({session})
     
