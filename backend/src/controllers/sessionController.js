@@ -4,7 +4,7 @@ export const createSession = async(req,res)=>{
   try {
     const {problem, difficulty} = req.body;
     const userId= req.user._id;
-    const clerckId = req.user.clerckId
+    const clerckId = req.user.clerkId
 
     if(!problem || !difficulty){
       return res.status(400).json({message:"Problem and difficulty are required"})
