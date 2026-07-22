@@ -60,7 +60,7 @@ function SessionPage() {
   useEffect(() => {
     if (!session || loadingSession) return;
 
-    if (session.status === "completed") navigate("/dashboard");
+    if (session.status === "Completed") navigate("/dashboard");
   }, [session, loadingSession, navigate]);
 
   // update code when problem loads or changes
@@ -132,7 +132,7 @@ function SessionPage() {
                           {session?.difficulty.slice(0, 1).toUpperCase() +
                             session?.difficulty.slice(1) || "Easy"}
                         </span>
-                        {isHost && session?.status === "active" && (
+                        {isHost && session?.status === "Active" && (
                           <button
                             onClick={handleEndSession}
                             disabled={endSessionMutation.isPending}
@@ -146,7 +146,7 @@ function SessionPage() {
                             End Session
                           </button>
                         )}
-                        {session?.status === "completed" && (
+                        {session?.status === "Completed" && (
                           <span className="badge badge-ghost badge-lg">Completed</span>
                         )}
                       </div>
